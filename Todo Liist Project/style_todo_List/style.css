@@ -1,0 +1,116 @@
+body {
+  background-color: #1a1a1a;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  display: inline-block;
+  background-color: rgb(188, 24, 87);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: fit-content;
+  cursor: pointer;
+  justify-content: right;
+  align-items: end;
+  transition: background-color 0.4s ease, opacity 0.4s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+  background-color: rgb(185, 43, 43);
+}
+
+button:active {
+  background-color: rgb(153, 51, 148);
+  opacity: 1;
+}
+input {
+  display: inline-flex;
+  background-color: rgb(43, 39, 39);
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  padding-left: 10px;
+  font-size: 13px;
+}
+input:focus {
+  outline: orchid;
+  background-color: rgb(53, 39, 39);
+  transition: background-color 0.4s ease;
+}
+
+ul {
+  float: left;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  background-color: rgb(43, 39, 39);
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 5px 150px 5px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.4s ease, opacity 0.4s ease;
+}
+
+.globalDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.outer-div-container {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(48, 43, 43, 0.3);
+  width: 250px;
+  height: auto;
+  padding: 40px 25px 30px 25px;
+  border-radius: 20px;
+}
+
+.heading-css {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -4px;
+  color: rgb(212, 12, 234);
+}
+
+.delete-button {
+  display: flex;
+  object-fit: contain;
+  align-items: center;
+  position: relative;
+  transform: translateX(140px);
+  margin-right: 140px;
+}
+.delete-button:hover {
+  opacity: 0.9;
+  background-color: rgb(185, 43, 43);
+}
+
+.button:active {
+  background-color: rgb(153, 51, 148);
+  opacity: 1;
+}
+
+.special-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(228, 18, 18);
+  transform: translateX(140px);
+}

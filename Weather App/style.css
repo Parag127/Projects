@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  background-image: url(https://images.pexels.com/photos/311039/pexels-photo-311039.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 100%;
+  box-shadow: rgb(0, 0, 0, 0.4);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+.input-container {
+  position: relative;
+  margin: 20px 0;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input[type = "text"] {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+input[type = "text"]:focus {
+  outline: none;
+  border-bottom-color: lightblue;
+}
+
+input[type = "text"]::placeholder {
+  color: #e5e5e5;
+}
+
+button {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  background-color: rgb(35, 188, 24);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: fit-content;
+  cursor: pointer;
+  justify-content: center;
+  align-items: end;
+  transition: background-color 0.4s ease,
+   opacity 0.4s ease;
+   padding: 10px;
+   padding-bottom: 10px;
+   font-size: 15px;
+}
+
+.city-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+button:hover {
+  opacity: 0.9;
+  background-color: rgb(185, 43, 43);
+}
+
+button:active {
+  background-color: rgb(153, 51, 148);
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+#error-message {
+  color: red;
+  margin-top: 20px;
+}
