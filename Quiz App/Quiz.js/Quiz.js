@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let clickedContent = clicked.textContent
         if (clickedContent === QuesAns[i].answer){
           scoreDisplay.textContent = Number(scoreDisplay.textContent) + 1;
-          i++
         }
         console.log(clickedContent)
         console.log(scoreDisplay)
@@ -72,12 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   
   function storeQuesAns() {
-    QuesAns.forEach((ques) => {
-      ques.questions;
-      ques.options;
-      ques.answer;
-      data.push(ques);
-    });
+
     // console.log(QuesAns[0].questions)
 
     question.innerHTML = `${QuesAns[i].questions}`;
@@ -90,17 +84,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayQuesAns() {
 
     nextBtn.addEventListener("click", () => {
-      question.innerHTML = `${data[i].questions}`;
-      option1.innerHTML = `${data[i].options[0]}`;
-      option2.innerHTML = `${data[i].options[1]}`;
-      option3.innerHTML = `${data[i].options[2]}`;
-      option4.innerHTML = `${data[i].options[3]}`;
+
       i++;
 
-      if (i >= 4) {
+      if (i >= QuesAns.length) {
       submitBtn.classList.remove("hidden")
-      nextBtn.classList.add('hidden')
-    }
+      nextBtn.classList.add('hidden');
+      return;
+      }
+
+    question.innerHTML = `${QuesAns[i].questions}`;
+    option1.innerHTML = `${QuesAns[i].options[0]}`;
+    option2.innerHTML = `${QuesAns[i].options[1]}`;
+    option3.innerHTML = `${QuesAns[i].options[2]}`;
+    option4.innerHTML = `${QuesAns[i].options[3]}`;
+
     });
   }
 
