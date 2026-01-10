@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.getElementById("next-btn");
   const submitBtn = document.getElementById("submit"); 
   const scoreDisplay = document.getElementById("score");
+  const divDisplayScore = document.getElementById("display-score")
   const restartBtn = document.getElementById("Restart-btn");
   const hiddenContent = document.getElementById("hidden-container");
   const question = document.getElementById("question");
@@ -11,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const option3 = document.getElementById("option-3");
   const option4 = document.getElementById("option-4");
   const heading = document.querySelector("h1");
+  const selectOption = document.getElementById("options")
+  
   let i = 0;
   const QuesAns = [
     {
@@ -45,9 +48,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   submitBtn.addEventListener('click', () => {
-    
+    displayScore();
+    updateScore();
   })
 
+  selectOption.addEventListener('click', (e) => {
+    let clicked = e.target
+      if (clicked.tagName === "P"){
+        checkAns(clicked);
+      }
+
+      // if (clickedContent === data[0].)
+    })
+
+  function checkAns (clicked) {
+    if (clicked.textContent === QuesAns[i].answer){
+      console.log(parseInt(scoreDisplay.innerHTML += 1));
+      i++;
+    }
+  }
+  
   function storeQuesAns() {
     QuesAns.forEach((ques) => {
       ques.questions;
@@ -78,16 +98,23 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.classList.remove("hidden")
       nextBtn.classList.add('hidden')
     }
-
     });
   }
+
+  function displayScore () {
+    divDisplayScore.classList.remove('hidden');
+    hiddenContent.classList.add('hidden');
+    }
+
+    function updateScore () {
+
+    }
 
   function renderAll() {
     startBtn.classList.add("hidden");
     heading.classList.add("hidden");
     hiddenContent.classList.remove("hidden");
-    submitBtn.classList.add('hidden')
+    submitBtn.classList.add('hidden');
 
   }
-  console.log(data);
 });
