@@ -39,34 +39,37 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   console.log(QuesAns.length);
 
-  const data = [];
+  const data = JSON.parse(localStorage.getItem("data")) || [];
 
   startBtn.addEventListener("click", () => {
-    renderAll();
     storeQuesAns();
+    renderAll();
     displayQuesAns();
   });
 
   submitBtn.addEventListener('click', () => {
     displayScore();
+    
+  })
+
+  restartBtn.addEventListener("click", () => {
     updateScore();
   })
 
   selectOption.addEventListener('click', (e) => {
     let clicked = e.target
       if (clicked.tagName === "P"){
-        checkAns(clicked);
+        let clickedContent = clicked.textContent
+        if (clickedContent === QuesAns[i].answer){
+          scoreDisplay.textContent = Number(scoreDisplay.textContent) + 1;
+          i++
+        }
+        console.log(clickedContent)
+        console.log(scoreDisplay)
       }
 
       // if (clickedContent === data[0].)
     })
-
-  function checkAns (clicked) {
-    if (clicked.textContent === QuesAns[i].answer){
-      console.log(parseInt(scoreDisplay.innerHTML += 1));
-      i++;
-    }
-  }
   
   function storeQuesAns() {
     QuesAns.forEach((ques) => {
@@ -107,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateScore () {
-
+      location.reload();
     }
 
   function renderAll() {
@@ -116,5 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
     hiddenContent.classList.remove("hidden");
     submitBtn.classList.add('hidden');
 
+  }
+
+  function storeLocally(data) {
+    localStorage.setItem("data", JSON.stringify(data))
   }
 });
