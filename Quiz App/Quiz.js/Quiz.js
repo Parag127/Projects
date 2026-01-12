@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.getElementById("start-btn");
   const nextBtn = document.getElementById("next-btn");
-  const submitBtn = document.getElementById("submit"); 
+  const submitBtn = document.getElementById("submit");
   const scoreDisplay = document.getElementById("score");
-  const divDisplayScore = document.getElementById("display-score")
+  const divDisplayScore = document.getElementById("display-score");
   const restartBtn = document.getElementById("Restart-btn");
   const hiddenContent = document.getElementById("hidden-container");
   const question = document.getElementById("question");
@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const option3 = document.getElementById("option-3");
   const option4 = document.getElementById("option-4");
   const heading = document.querySelector("h1");
-  const selectOption = document.getElementById("options")
-  
+  const selectOption = document.getElementById("options");
+
   let i = 0;
   const QuesAns = [
     {
@@ -37,9 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
       answer: "0°C or 32°F",
     },
   ];
-  console.log(QuesAns.length);
-
-  const data = JSON.parse(localStorage.getItem("data")) || [];
 
   startBtn.addEventListener("click", () => {
     storeQuesAns();
@@ -47,38 +44,32 @@ document.addEventListener("DOMContentLoaded", () => {
     displayQuesAns();
   });
 
-  submitBtn.addEventListener('click', () => {
+  submitBtn.addEventListener("click", () => {
     displayScore();
-    
-  })
+  });
 
   restartBtn.addEventListener("click", () => {
     updateScore();
-  })
+  });
 
-  selectOption.addEventListener('click', (e) => {
+  selectOption.addEventListener("click", (e) => {
+    let clicked = e.target;
+    if (clicked.tagName === "P") {
+      clicked.classList.toggle("selected");
+      let clickedContent = clicked.textContent;
+      if (clickedContent === QuesAns[i].answer) {
+        nextBtn.addEventListener("click", () => {
+          clicked.classList.remove("selected");
+        });
 
-    let clicked = e.target
-      if (clicked.tagName === "P"){
-        clicked.classList.toggle('selected');
-        let clickedContent = clicked.textContent
-        if (clickedContent === QuesAns[i].answer){
-          nextBtn.addEventListener("click", () => {
-            clicked.classList.remove("selected");
-          })
-          
-          scoreDisplay.textContent = Number(scoreDisplay.textContent) + 1;
-        }
-        console.log(clickedContent)
-        console.log(scoreDisplay)
+        scoreDisplay.textContent = Number(scoreDisplay.textContent) + 1;
       }
-
-      // if (clickedContent === data[0].)
-    })
-
+      console.log(clickedContent);
+      console.log(scoreDisplay);
+    }
+  });
 
   function storeQuesAns() {
-
     // console.log(QuesAns[0].questions)
 
     question.innerHTML = `${QuesAns[i].questions}`;
@@ -89,43 +80,36 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayQuesAns() {
-
     nextBtn.addEventListener("click", () => {
       i++;
 
       if (i >= QuesAns.length) {
-      submitBtn.classList.remove("hidden")
-      nextBtn.classList.add('hidden');
-      return;
+        submitBtn.classList.remove("hidden");
+        nextBtn.classList.add("hidden");
+        return;
       }
 
-    question.innerHTML = `${QuesAns[i].questions}`;
-    option1.innerHTML = `${QuesAns[i].options[0]}`;
-    option2.innerHTML = `${QuesAns[i].options[1]}`;
-    option3.innerHTML = `${QuesAns[i].options[2]}`;
-    option4.innerHTML = `${QuesAns[i].options[3]}`;
-
+      question.innerHTML = `${QuesAns[i].questions}`;
+      option1.innerHTML = `${QuesAns[i].options[0]}`;
+      option2.innerHTML = `${QuesAns[i].options[1]}`;
+      option3.innerHTML = `${QuesAns[i].options[2]}`;
+      option4.innerHTML = `${QuesAns[i].options[3]}`;
     });
   }
 
-  function displayScore () {
-    divDisplayScore.classList.remove('hidden');
-    hiddenContent.classList.add('hidden');
-    }
+  function displayScore() {
+    divDisplayScore.classList.remove("hidden");
+    hiddenContent.classList.add("hidden");
+  }
 
-    function updateScore () {
-      location.reload();
-    }
+  function updateScore() {
+    location.reload();
+  }
 
   function renderAll() {
     startBtn.classList.add("hidden");
     heading.classList.add("hidden");
     hiddenContent.classList.remove("hidden");
-    submitBtn.classList.add('hidden');
-
-  }
-
-  function storeLocally(data) {
-    localStorage.setItem("data", JSON.stringify(data))
+    submitBtn.classList.add("hidden");
   }
 });
