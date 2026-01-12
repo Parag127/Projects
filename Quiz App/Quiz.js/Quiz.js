@@ -61,15 +61,24 @@ document.addEventListener("DOMContentLoaded", () => {
       if (clicked.tagName === "P"){
         let clickedContent = clicked.textContent
         if (clickedContent === QuesAns[i].answer){
+          
           scoreDisplay.textContent = Number(scoreDisplay.textContent) + 1;
         }
+        optionclicked();
         console.log(clickedContent)
         console.log(scoreDisplay)
       }
 
       // if (clickedContent === data[0].)
     })
-  
+  function optionclicked () {
+    selectOption.addEventListener('click', (e) => {
+      if (e.target.tagName === "P"){
+       classList.add('selected') 
+      }
+    })
+      
+  }
   function storeQuesAns() {
 
     // console.log(QuesAns[0].questions)
