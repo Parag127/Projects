@@ -57,28 +57,26 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   selectOption.addEventListener('click', (e) => {
+
     let clicked = e.target
       if (clicked.tagName === "P"){
+        clicked.classList.toggle('selected');
         let clickedContent = clicked.textContent
         if (clickedContent === QuesAns[i].answer){
+          nextBtn.addEventListener("click", () => {
+            clicked.classList.remove("selected");
+          })
           
           scoreDisplay.textContent = Number(scoreDisplay.textContent) + 1;
         }
-        optionclicked();
         console.log(clickedContent)
         console.log(scoreDisplay)
       }
 
       // if (clickedContent === data[0].)
     })
-  function optionclicked () {
-    selectOption.addEventListener('click', (e) => {
-      if (e.target.tagName === "P"){
-       classList.add('selected') 
-      }
-    })
-      
-  }
+
+
   function storeQuesAns() {
 
     // console.log(QuesAns[0].questions)
@@ -93,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayQuesAns() {
 
     nextBtn.addEventListener("click", () => {
-
       i++;
 
       if (i >= QuesAns.length) {
